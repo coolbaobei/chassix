@@ -19,13 +19,7 @@ func LoadFromApollo() {
 			os.Exit(1)
 			return
 		}
-
-		for _, namespace := range (config).Apollo.Settings.Namespaces {
-			ymlTxt := apollo.GetNameSpaceContent(namespace, "")
-			if err := yaml.NewDecoder(strings.NewReader(ymlTxt)).Decode(config); err != nil {
-				fmt.Printf("load apollo config error: %s\n", err)
-			}
-		}
+		readConfig(config)
 
 		// hot loading refresh config
 		go func() {
@@ -34,17 +28,9 @@ func LoadFromApollo() {
 				changeEvent := <-event
 				bytes, _ := json.Marshal(changeEvent)
 				fmt.Println("event:", string(bytes))
-				for _, namespace := range (config).Apollo.Settings.Namespaces {
-					ymlTxt := apollo.GetNameSpaceContent(namespace, "")
-					if err := yaml.NewDecoder(strings.NewReader(ymlTxt)).Decode(config); err != nil {
-						fmt.Printf("load apollo config error: %s\n", err)
-					}
-					if requireLoadCustomConfig {
-						if err := yaml.NewDecoder(strings.NewReader(ymlTxt)).Decode(customConfig); err != nil {
-							fmt.Printf("load apollo config error: %s\n", err)
-						}
-					}
-				}
+				readConfig(config)
+				readConfig(customConfig)
+
 			}
 		}()
 	}
@@ -60,13 +46,15 @@ func LoadCustomFromApollo(customCfg interface{}) error {
 		return errors.New("apollo is not enabled")
 	}
 	requireLoadCustomConfig = true
-	for _, namespace := range (config).Apollo.Settings.Namespaces {
+	readConfig(customCfg)
+	customConfig = customCfg
+	return nil
+}
+func readConfig(cfg interface{}) {
+	for _, namespace := range config.Apollo.Settings.Namespaces {
 		ymlTxt := apollo.GetNameSpaceContent(namespace, "")
-		if err := yaml.NewDecoder(strings.NewReader(ymlTxt)).Decode(customCfg); err != nil {
+		if err := yaml.NewDecoder(strings.NewReader(ymlTxt)).Decode(cfg); err != nil {
 			fmt.Printf("load apollo config error: %s\n", err)
-		} else {
-			customConfig = customCfg
 		}
 	}
-	return nil
 }
