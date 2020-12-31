@@ -27,6 +27,6 @@ chassis-go 集成优秀的go框架以使用golang快速开发web服务
 
 安装依赖
 ```
-go get github.com/coolbaobei/chassix
+go get c6x.io/chassis
 ```
 [缓存使用](./cache-zh_CN.md)

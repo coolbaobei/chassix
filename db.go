@@ -1,8 +1,8 @@
 package chassis
 
 import (
-	"github.com/coolbaobei/chassix/config"
-	"github.com/coolbaobei/chassix/logx"
+	"c6x.io/chassis/config"
+	"c6x.io/chassis/logx"
 	"errors"
 	"sync"
 	"time"

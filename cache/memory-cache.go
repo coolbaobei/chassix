@@ -7,7 +7,7 @@ import (
 
 	lru "github.com/hashicorp/golang-lru"
 
-	"github.com/coolbaobei/chassix/logx"
+	"c6x.io/chassis/logx"
 )
 
 //MemoryCache implements cache store based or lru cache

@@ -1,4 +1,4 @@
-module github.com/coolbaobei/chassix
+module c6x.io/chassis
 
 go 1.13
 

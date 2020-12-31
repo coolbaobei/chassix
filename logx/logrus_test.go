@@ -1,7 +1,7 @@
 package logx
 
 import (
-	"github.com/coolbaobei/chassix/config"
+	"c6x.io/chassis/config"
 	"testing"
 )
 

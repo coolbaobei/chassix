@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/coolbaobei/chassix/config"
+	"c6x.io/chassis/config"
 	"github.com/go-redis/redis/v8"
 )
 

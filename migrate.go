@@ -9,7 +9,7 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/database/mysql" //import mysql driver
 	"github.com/golang-migrate/migrate/v4/source/go_bindata"
 
-	"github.com/coolbaobei/chassix/logx"
+	"c6x.io/chassis/logx"
 )
 
 //Migrate Run new bindataInstance and UP
