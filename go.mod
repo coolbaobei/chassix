@@ -3,7 +3,7 @@ module c6x.io/chassis
 go 1.13
 
 require (
-	github.com/antonfisher/nested-logrus-formatter v1.1.0
+	github.com/antonfisher/nested-logrus-formatter v1.3.0
 	github.com/emicklei/go-restful-openapi/v2 v2.1.0
 	github.com/emicklei/go-restful/v3 v3.1.0
 	github.com/go-openapi/spec v0.19.5

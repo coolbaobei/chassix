@@ -8,14 +8,12 @@ import (
 	"log"
 	"os"
 	"time"
-
 )
 
 type Logger struct {
 	entry *logx.Entry
 	logger.Config
 }
-
 
 func NewLogger(logCfg *config.LoggerConfig) *Logger {
 	log := new(Logger)

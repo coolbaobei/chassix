@@ -21,7 +21,7 @@ type Config struct {
 	Databases []*DatabaseConfig `yaml:"databases,flow"`
 	OpenAPI   OpenAPIConfig     `yaml:"openapi"`
 	Server    ServerConfig      `yaml:"server"`
-	Logging   LoggerConfig     `yaml:"logging"`
+	Logging   LoggingConfig     `yaml:"logging"`
 	Mails     []MailConfig      `yaml:"mail,flow"`
 	Apollo    ApolloConfig      `yaml:"apollo"`
 	Redis     RedisConfig       `yaml:"redis"`
@@ -37,13 +37,13 @@ func LoadFileEnvKey() string {
 	return configFileEnvKey
 }
 
-////LoggingConfig log config
-//type LoggingConfig struct {
-//	Level        uint32
-//	ReportCaller bool `yaml:"report-caller"`
-//	NoColors     bool `yaml:"no-colors"`
-//	CallerFirst  bool `yaml:"caller-first"`
-//}
+//LoggingConfig log config
+type LoggingConfig struct {
+	Level        logger.LogLevel `yaml:"level"`
+	ReportCaller bool            `yaml:"report-caller"`
+	NoColors     bool            `yaml:"no-colors"`
+	CallerFirst  bool            `yaml:"caller-first"`
+}
 
 //AppConfig application config
 type AppConfig struct {
@@ -59,22 +59,27 @@ type ServerConfig struct {
 
 //DatabaseConfig db config
 type DatabaseConfig struct {
-	Dialect     string `yaml:"dialect"`
-	DSN         string `yaml:"dsn"`
-	MaxIdle     int    `yaml:"maxIdle"`
-	MaxOpen     int    `yaml:"maxOpen"`
-	MaxLifetime int    `yaml:"maxLifetime"`
-	ShowSQL     bool   `yaml:"showSQL"`
+	Dialect     string       `yaml:"dialect"`
+	DSN         string       `yaml:"dsn"`
+	MaxIdle     int          `yaml:"maxIdle"`
+	MaxOpen     int          `yaml:"maxOpen"`
+	MaxLifetime int          `yaml:"maxLifetime"`
+	ShowSQL     bool         `yaml:"showSQL"`
 	Logger      LoggerConfig `yaml:"logger"`
+}
+type LoggerConfig struct {
+	SlowThreshold time.Duration   `yaml:"slow_threshold"`
+	Level         logger.LogLevel `yaml:"level"`
+	Colorful      bool            `yaml:"colorful"`
 }
 
 //OpenAPIConfig open api config
 type OpenAPIConfig struct {
-	Enabled bool `yaml:"enabled"`
-	Host string  `yaml:"host"`
-	BasePath string `yaml:"basePath"`
-	Schemas   []string	`yaml:"schemas"`
-	Spec    struct {
+	Enabled  bool     `yaml:"enabled"`
+	Host     string   `yaml:"host"`
+	BasePath string   `yaml:"basePath"`
+	Schemas  []string `yaml:"schemas"`
+	Spec     struct {
 		Title       string
 		Description string `yaml:"desc"`
 		Contact     struct {
@@ -135,11 +140,6 @@ type RedisSentinelConfig struct {
 type RedisSimpleConfig struct {
 	// host:port address.
 	Addr string
-}
-type LoggerConfig struct {
-	SlowThreshold time.Duration   `yaml:"slow_threshold"`
-	Level         logger.LogLevel `yaml:"level"`
-	Colorful      bool            `yaml:"colorful"`
 }
 
 //RedisCommonConfig redis common config
@@ -265,7 +265,7 @@ func Database() *DatabaseConfig {
 }
 
 //Logging log config
-func Logging() LoggerConfig {
+func Logging() LoggingConfig {
 	return config.Logging
 }
 
