@@ -53,11 +53,11 @@ func New() *Logger {
 			formatter.HideKeys = false
 		}
 		nLog.SetLevel(level)
-		nLog.SetReportCaller(config.Logging().ReportCaller)
-		formatter.NoColors = config.Logging().NoColors
-		if config.Logging().ReportCaller {
-			formatter.CallerFirst = config.Logging().CallerFirst
-		}
+		nLog.SetReportCaller(config.Logging().Colorful)
+		formatter.NoColors = config.Logging().Colorful
+		//if config.Logging().ReportCaller {
+		//	formatter.CallerFirst = config.Logging().CallerFirst
+		//}
 	}
 
 	nLog.SetFormatter(formatter)

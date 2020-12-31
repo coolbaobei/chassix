@@ -2,6 +2,8 @@ package config
 
 import (
 	"gopkg.in/apollo.v0"
+	"gorm.io/gorm/logger"
+	"time"
 )
 
 var (
@@ -19,7 +21,7 @@ type Config struct {
 	Databases []*DatabaseConfig `yaml:"databases,flow"`
 	OpenAPI   OpenAPIConfig     `yaml:"openapi"`
 	Server    ServerConfig      `yaml:"server"`
-	Logging   LoggingConfig     `yaml:"logging"`
+	Logging   LoggerConfig     `yaml:"logging"`
 	Mails     []MailConfig      `yaml:"mail,flow"`
 	Apollo    ApolloConfig      `yaml:"apollo"`
 	Redis     RedisConfig       `yaml:"redis"`
@@ -35,13 +37,13 @@ func LoadFileEnvKey() string {
 	return configFileEnvKey
 }
 
-//LoggingConfig log config
-type LoggingConfig struct {
-	Level        uint32
-	ReportCaller bool `yaml:"report-caller"`
-	NoColors     bool `yaml:"no-colors"`
-	CallerFirst  bool `yaml:"caller-first"`
-}
+////LoggingConfig log config
+//type LoggingConfig struct {
+//	Level        uint32
+//	ReportCaller bool `yaml:"report-caller"`
+//	NoColors     bool `yaml:"no-colors"`
+//	CallerFirst  bool `yaml:"caller-first"`
+//}
 
 //AppConfig application config
 type AppConfig struct {
@@ -63,6 +65,7 @@ type DatabaseConfig struct {
 	MaxOpen     int    `yaml:"maxOpen"`
 	MaxLifetime int    `yaml:"maxLifetime"`
 	ShowSQL     bool   `yaml:"showSQL"`
+	Logger      LoggerConfig `yaml:"logger"`
 }
 
 //OpenAPIConfig open api config
@@ -132,6 +135,11 @@ type RedisSentinelConfig struct {
 type RedisSimpleConfig struct {
 	// host:port address.
 	Addr string
+}
+type LoggerConfig struct {
+	SlowThreshold time.Duration   `yaml:"slow_threshold"`
+	Level         logger.LogLevel `yaml:"level"`
+	Colorful      bool            `yaml:"colorful"`
 }
 
 //RedisCommonConfig redis common config
@@ -257,7 +265,7 @@ func Database() *DatabaseConfig {
 }
 
 //Logging log config
-func Logging() LoggingConfig {
+func Logging() LoggerConfig {
 	return config.Logging
 }
 
