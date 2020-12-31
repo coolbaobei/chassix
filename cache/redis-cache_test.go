@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"c6x.io/chassis/config"
+	"github.com/coolbaobei/chassix/config"
 	"github.com/stretchr/testify/assert"
 )
 

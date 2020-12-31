@@ -9,7 +9,7 @@ go webservice chassis
 
 usage:
 ```
-go get c6x.io/chassis
+go get github.com/coolbaobei/chassix
 ```
 
 

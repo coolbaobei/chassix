@@ -8,7 +8,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/stretchr/testify/assert"
 
-	"c6x.io/chassis/config"
+	"github.com/coolbaobei/chassix/config"
 )
 
 func TestReadOptions(t *testing.T) {

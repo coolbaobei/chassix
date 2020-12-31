@@ -5,7 +5,7 @@ import (
 	"github.com/emicklei/go-restful/v3"
 	log "github.com/sirupsen/logrus"
 
-	"c6x.io/chassis/config"
+	"github.com/coolbaobei/chassix/config"
 )
 
 // var formatter = &zt_formatter.ZtFormatter{

@@ -1,7 +1,7 @@
 package cache
 
 import (
-	"c6x.io/chassis/config"
+	"github.com/coolbaobei/chassix/config"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

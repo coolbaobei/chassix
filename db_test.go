@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"c6x.io/chassis/config"
+	"github.com/coolbaobei/chassix/config"
 )
 
 func TestDBs(t *testing.T) {

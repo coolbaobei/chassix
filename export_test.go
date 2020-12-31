@@ -1,7 +1,7 @@
 package chassis
 //
 //import (
-//	"c6x.io/chassis/config"
+//	"github.com/coolbaobei/chassix/config"
 //	"testing"
 //
 //	"github.com/stretchr/testify/assert"

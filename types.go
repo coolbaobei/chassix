@@ -1,6 +1,6 @@
 package chassis
 
-import "c6x.io/chassis/apierrors"
+import "github.com/coolbaobei/chassix/apierrors"
 
 //BaseDTO Data Transfer Object
 type BaseDTO struct {

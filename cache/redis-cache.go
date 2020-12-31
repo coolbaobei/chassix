@@ -8,10 +8,10 @@ import (
 	"reflect"
 	"time"
 
-	"c6x.io/chassis/config"
-	"c6x.io/chassis/logx"
+	"github.com/coolbaobei/chassix/config"
+	"github.com/coolbaobei/chassix/logx"
 
-	"c6x.io/chassis"
+	"github.com/coolbaobei/chassix"
 )
 
 //RedisCacheStore based redis implement cache store

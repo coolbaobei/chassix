@@ -1,6 +1,6 @@
 package chassis
 
-import "c6x.io/chassis/apierrors"
+import "github.com/coolbaobei/chassix/apierrors"
 
 //NewAPIError new api error
 func NewAPIError(code int, msg, desc string) *apierrors.APIError {

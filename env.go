@@ -1,6 +1,6 @@
 package chassis
 
-import "c6x.io/chassis/config"
+import "github.com/coolbaobei/chassix/config"
 
 const (
 	//EnvPgTestDataFile import test data sql file
